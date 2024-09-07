@@ -5,6 +5,7 @@ from discord import guild
 from discord.abc import GuildChannel
 from discord.flags import Intents
 import os
+from server import server_thread
 
 fortunes = ["大吉", "吉", "中吉", "小吉", "末吉", "凶", "大凶"]
 
