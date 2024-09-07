@@ -83,5 +83,5 @@ def randomItem():
   result = random.choices(lucky.items)[0]
   return result
 
-
+server_thread()
 client.run(DISCORD_TOKEN)
