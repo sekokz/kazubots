@@ -7,6 +7,8 @@ from discord.flags import Intents
 
 fortunes = ["大吉", "吉", "中吉", "小吉", "末吉", "凶", "大凶"]
 
+DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+
 id_to_name = {
   "kzn_ygr":"カズ",
   "yu01383":"ユウ",
