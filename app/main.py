@@ -102,3 +102,4 @@ async def on_message(message):
 
 server_thread()
 client.run(DISCORD_TOKEN)
+
