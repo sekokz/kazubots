@@ -79,10 +79,10 @@ def get_lily(name):
     match_names = [entry["name"] for entry in items if entry["date"] == today]
 
     if match_names:
-      msg = f"今日は {' ちゃんと '.join(match_names)} ちゃんの誕生日！"
+      msg = f"今日は {'ちゃんと '.join(match_names)}ちゃんの誕生日！"
     else:
       random_name = random_lily()
-      msg = f"{name}さんの今日のリリィは {random_name["name"]} だよ"
+      msg = f"{name}さんの今日のリリィは {random_name["name"]}ちゃんだよ"
     return msg
 
 def random_lily():
