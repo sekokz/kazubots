@@ -9,7 +9,7 @@ from datetime import datetime
 import os
 from server import server_thread
 
-#import TOKEN
+import TOKEN
 #DISCORD_TOKEN = TOKEN.DISCORD_TOKEN
 
 DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
@@ -71,7 +71,11 @@ async def on_message(message):
     await channel.send(fortune.get_fortune(g_name), silent=True)
 
   elif mode == 2:
-    await channel.send(lily.get_lily(g_name), silent=True)
+
+    msgs = lily.get_lily(g_name)
+
+    for msg in msgs:
+      await channel.send(msg, silent=True)
 
   # 文句言われた
   elif mode == 3:
@@ -103,7 +107,6 @@ async def on_message(message):
 
   elif mode == 4:
     await channel.send(jobshuffle.get_shuffled(message.guild.members), silent=True)
-
 
 server_thread()
 client.run(DISCORD_TOKEN)
