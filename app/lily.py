@@ -71,6 +71,26 @@ items = [
    {"date": "9-6", "name": "菱田治"},
    {"date": "3-19", "name": "坪井七保"}
   ]
+nick_names = [
+   {"name":"二川二水","emoji":"<:kaede_gokigenyou:1198673657040478218>","msg":"ちびっこ1号ですわ" },
+   {"name":"二川二水","emoji":"<:mai_gj:1198673822711283904>","msg":"ふーみんだゾ" },
+   {"name":"ミリアム・ヒルデガルド・v・グロピウス","emoji":"<:moyu_yeah:1198678721675141220>","msg":"ぐろっぴよ～" },
+   {"name":"ミリアム・ヒルデガルド・v・グロピウス","emoji":"<:shen_fufun:1299456746615734372>","msg":"ミーさんです" },
+   {"name":"ミリアム・ヒルデガルド・v・グロピウス","emoji":"<:kaede_gokigenyou:1198673657040478218>","msg":"ちびっこ2号ですわ" },
+   {"name":"今叶星","emoji":"<:akari_yatta:1198674258990207167>","msg":"かなほせんぱいっ！" },
+   {"name":"宮川高嶺","emoji":"<:akari_yatta:1198674258990207167>","msg":"たかにゃんせんぱいっ！" },
+   {"name":"土岐紅巴","emoji":"<:akari_yatta:1198674258990207167>","msg":"とっきー！" },
+   {"name":"定盛姫歌","emoji":"<:akari_yatta:1198674258990207167>","msg":"さだもりっ☆" },
+   {"name":"定盛姫歌","emoji":"<:shen_fufun:1299456746615734372>","msg":"ひめひめです" },
+   {"name":"横田悠夏","emoji":"<:akari_yatta:1198674258990207167>","msg":"はるにゃん！" },
+   {"name":"本間秋日","emoji":"<:akari_yatta:1198674258990207167>","msg":"あけひせんぱい" },
+   {"name":"石塚藤乃","emoji":"<:akari_yatta:1198674258990207167>","msg":"ふじのんせんぱい！" },
+   {"name":"塩崎鈴夢","emoji":"<:akari_yatta:1198674258990207167>","msg":"すずめっち～" },
+   {"name":"塩崎鈴夢","emoji":"<:ran_wai:1198165198930972682>","msg":"ベルちゃんだよ～" },
+   {"name":"相澤一葉","emoji":"<:akari_yatta:1198674258990207167>","msg":"かずにゃんっ" },
+   {"name":"船田純","emoji":"<:ran_wai:1198165198930972682>","msg":"きいたんだー！" },
+   {"name":"藤田槿","emoji":"<:akari_yatta:1198674258990207167>","msg":"がおがおせんぱい" },
+]
 
 def get_lily(name):
     
@@ -78,11 +98,24 @@ def get_lily(name):
 
     match_names = [entry["name"] for entry in items if entry["date"] == today]
 
+    msg = []
+
     if match_names:
-      msg = f"今日は {'ちゃんと '.join(match_names)}ちゃんの誕生日！"
+      msg.append(f"今日は {'ちゃんと '.join(match_names)}ちゃんの誕生日！")
     else:
       random_name = random_lily()
-      msg = f"{name}さんの今日のリリィは {random_name["name"]}ちゃんだよ"
+      option_msg = [{"emoji":nick_name["emoji"], "msg":nick_name["msg"]} for nick_name in nick_names if nick_name["name"] == random_name["name"]]
+
+      flag = random.randint(0, 1)
+
+      if len(option_msg) == 0 or flag == 0:
+        msg.append(f"{name}さんの今日のリリィは {random_name["name"]}ちゃんだよ")
+
+      else:
+        random.shuffle(option_msg)
+        msg.append(option_msg[0]["emoji"])
+        msg.append(f"{name}さんの今日のリリィは {option_msg[0]["msg"]}")
+
     return msg
 
 def random_lily():
