@@ -9,7 +9,7 @@ from datetime import datetime
 import os
 from server import server_thread
 
-import TOKEN
+#import TOKEN
 #DISCORD_TOKEN = TOKEN.DISCORD_TOKEN
 
 DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
