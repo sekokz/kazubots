@@ -78,6 +78,7 @@ items = [
     "チョコバナナ",
     "ドーナツ",
     "グラタン",
+    "激辛ラーメン",
     "レバー",
     "ゴーヤ",
     "ナマコ",
@@ -96,11 +97,31 @@ items = [
     "高野豆腐",
     "イカスミパスタ",
     "とろろ"
-    ]
+]
 
-def get_fortune(name):
+christmas = [
+    "フライドチキン",
+    "ローストチキン",
+    "ローストビーフ",
+    "ブッシュドノエル",
+    "シュトーレン",
+    "クリスマスケーキ"
+]
+
+newyear = [
+  "かまぼこ",
+  "雑煮",
+  "黒豆",
+  "伊達巻",
+  "数の子",
+  "栗きんとん",
+  "昆布巻",
+  "エビ"
+]
+
+def get_fortune(name, today):
     f = randomFortune()
-    item = randomItem()
+    item = randomItem(today)
     msg = f"{name}さんの運勢は{f}だってさ\nラッキーフードは{item}だよ"
     return msg
 
@@ -110,6 +131,14 @@ def randomFortune():
   result = random.choices(fortunes, probabilities, k=1)[0]
   return result
 
-def randomItem():
-  result = random.choices(items)[0]
+def randomItem(today):
+  if today.month == 1 and 1 <= today.day <= 3:
+    result = random.choices(newyear)[0]
+  elif today.month == 12 and 24 <= today.day <= 25:
+    result = random.choices(christmas)[0]
+  else:
+    result = random.choices(items)[0]
+
+  print(f"today is {today.month}/{today.day}")
+
   return result
