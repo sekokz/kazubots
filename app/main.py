@@ -9,7 +9,6 @@ from discord.flags import Intents
 from datetime import datetime
 import pytz
 import os
-import remind as reminder
 from server import server_thread
 
 import TOKEN
